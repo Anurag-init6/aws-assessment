@@ -79,5 +79,5 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: python test_script.py
+        run: python3 test_script.py
         # Note: requires deployed infra + filled-in variables in test_script.py
