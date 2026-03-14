@@ -43,12 +43,12 @@ resource "aws_iam_role_policy" "lambda_policy" {
       },
       {
         Effect   = "Allow"
-        Action   = ["logs:CreateLogGroup","logs:CreateLogStream","logs:PutLogEvents"]
+        Action   = ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"]
         Resource = "*"
       },
       {
         Effect   = "Allow"
-        Action   = ["ecs:RunTask","iam:PassRole"]
+        Action   = ["ecs:RunTask", "iam:PassRole"]
         Resource = "*"
       }
     ]
@@ -144,10 +144,10 @@ resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }
 resource "aws_subnet" "public" {
-  vpc_id            = aws_vpc.main.id
-  cidr_block        = "10.0.1.0/24"
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
-  availability_zone = "${var.region}a"
+  availability_zone       = "${var.region}a"
 }
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
@@ -218,8 +218,8 @@ resource "aws_ecs_task_definition" "sns_publisher" {
   task_role_arn            = aws_iam_role.ecs_task_role.arn
   execution_role_arn       = aws_iam_role.ecs_execution_role.arn
   container_definitions = jsonencode([{
-    name    = "sns-publisher"
-    image   = "amazon/aws-cli"
+    name  = "sns-publisher"
+    image = "amazon/aws-cli"
     command = [
       "sns", "publish",
       "--region", "us-east-1",

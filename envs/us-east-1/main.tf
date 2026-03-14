@@ -15,8 +15,8 @@ module "compute" {
   region                      = "us-east-1"
   cognito_user_pool_id        = data.terraform_remote_state.auth.outputs.user_pool_id
   cognito_user_pool_client_id = data.terraform_remote_state.auth.outputs.user_pool_client_id
-  your_email                  = "singh.anuragsaurabh@gmail.com"       
-  github_repo                 = "https://github.com/Anurag-ini6/aws-assessment"  
+  your_email                  = "singh.anuragsaurabh@gmail.com"
+  github_repo                 = "https://github.com/Anurag-ini6/aws-assessment"
 }
 
 output "api_url_us" { value = module.compute.api_url }

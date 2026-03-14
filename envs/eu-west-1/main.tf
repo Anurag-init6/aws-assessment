@@ -10,12 +10,12 @@ data "terraform_remote_state" "auth" {
   config  = { path = "../../auth/terraform.tfstate" }
 }
 module "compute" {
-  source  = "../../modules/compute"
-  region  = "eu-west-1"
+  source                      = "../../modules/compute"
+  region                      = "eu-west-1"
   cognito_user_pool_id        = data.terraform_remote_state.auth.outputs.user_pool_id
   cognito_user_pool_client_id = data.terraform_remote_state.auth.outputs.user_pool_client_id
   your_email                  = "singh.anuragsaurabh@gmail.com"
   github_repo                 = "https://github.com/Anurag-ini6/aws-assessment"
- 
+
 }
 output "api_url_eu" { value = module.compute.api_url }

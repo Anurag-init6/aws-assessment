@@ -16,8 +16,8 @@ resource "aws_cognito_user_pool_client" "main" {
 }
 
 resource "aws_cognito_user" "test_user" {
-  user_pool_id = aws_cognito_user_pool.main.id
-  username     = "singh.anuragsaurabh@gmail.com"                    
+  user_pool_id       = aws_cognito_user_pool.main.id
+  username           = "singh.anuragsaurabh@gmail.com"
   temporary_password = "Anurag123$"
   attributes = {
     email          = "singh.anuragsaurabh@gmail.com"
@@ -26,5 +26,5 @@ resource "aws_cognito_user" "test_user" {
   message_action = "SUPPRESS"
 }
 
-output "user_pool_id"     { value = aws_cognito_user_pool.main.id }
+output "user_pool_id" { value = aws_cognito_user_pool.main.id }
 output "user_pool_client_id" { value = aws_cognito_user_pool_client.main.id }
